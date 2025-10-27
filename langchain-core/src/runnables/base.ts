@@ -116,12 +116,9 @@ export function _coerceToDict(value: any, defaultKey: string) {
  * transformed.
  */
 export abstract class Runnable<
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    RunInput = any,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    RunOutput = any,
-    CallOptions extends RunnableConfig = RunnableConfig
-  >
+  // 定义Runnable的类型、 RunOutput的类型和 CallOptions的类型
+  
+>
   extends Serializable
   implements RunnableInterface<RunInput, RunOutput, CallOptions>
 {
@@ -137,8 +134,8 @@ export abstract class Runnable<
   }
 
   abstract invoke(
-    input: RunInput,
-    options?: Partial<CallOptions>
+    
+
   ): Promise<RunOutput>;
 
   /**
@@ -180,6 +177,15 @@ export abstract class Runnable<
       ...fields,
     });
   }
+  /**
+   * Transformed input data using the specified configuration
+   * @param {string} input The input string to transform
+   * @param {TransformOptions} options Configuration options
+   * @returns {Promise<number>} The transformed result
+   */
+  async   
+
+
 
   /**
    * Bind config to a Runnable, returning a new Runnable.
@@ -1166,18 +1172,8 @@ export abstract class Runnable<
     return new RunnableBinding<RunInput, RunOutput, CallOptions>({
       bound: this,
       config: {},
-      configFactories: [
-        (config) => ({
-          callbacks: [
-            new RootListenersTracer({
-              config,
-              onStart,
-              onEnd,
-              onError,
-            }),
-          ],
-        }),
-      ],
+      configFactories: 
+      
     });
   }
 
